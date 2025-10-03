@@ -275,16 +275,38 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a …        | I want to …                                                                              | So that I can…                                     |
+| -------- | ------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `* * *`  | tutor         | track attendance                                                                         | calculate attendance grades                        |
+| `* * *`  | tutor         | track participation                                                                      | calculate participation grades                     |
+| `* * *`  | tutor         | organise students into their different classes.                                          | organize by tutorial group                         |
+| `* * *`  | tutor         | select specific groups to view                                                           | see students by group                              |
+| `* * *`  | tutor         | search for a specific student                                                            | contact him                                        |
+| `* * *`  | tutor         | tag students with custom labels                                                          | track behavioural trends.                          |
+| `* * *`  | tutor         | add a tag to my weaker students                                                          | remember to check in on them                       |
+| `* *`    | tutor         | sort by day                                                                              | know which groups I have for that day              |
+| `* *`    | tutor         | archive students                                                                         | view current vs past students                      |
+| `* *`    | tutor         | be alerted to students with poor attendance                                              | check up on them.                                  |
+| `* *`    | tutor         | filter students by performance metrics                                                   | identify weaker students.                          |
+| `* *`    | tutor         | quickly mark attendance for multiple students at once                                    | save time                                          |
+| `* *`    | tutor         | record participation (e.g., "active," "quiet," "needs improvement")                      | monitor engagement.                                |
+| `* *`    | tutor         | pre mark my students attendance if I know they are going to be absent                    | better plan my lessons earlier.                    |
+| `* *`    | tutor         | be able to filter between students that need more help and students that are on schedule | take a glance                                      |
+| `* *`    | tutor         | add the contact details of my student                                                    | contact them                                       |
+| `* *`    | tutor         | edit the contact details of my student                                                   | have accurate info                                 |
+| `* *`    | busy tutor    | track the assignments that I have given out                                              | know when to expect work to be handed in.          |
+| `* *`    | busy tutor    | take attendance easily                                                                   | spend more time teaching in class.                 |
+| `* *`    | private tutor | track student addresses                                                                  | go to their house                                  |
+| `* *`    | private tutor | track payments                                                                           | identify current students                          |
+| `*`      | tutor         | create events for classes and office hours                                               | am organized                                       |
+| `*`      | tutor         | record test and assignment scores                                                        | track academic progress.                           |
+| `*`      | tutor         | export attendance and progress reports                                                   | share them with parents or institutions.           |
+| `*`      | tutor         | filter reports by timeframe (e.g., monthly / termly)                                     | measure improvement over periods.                  |
+| `*`      | tutor         | attach files to students' absences                                                       | easily track the relevant certificates of absence. |
+| `*`      | tutor         | see progress graphs for each student                                                     | visualise improvement                              |
+| `*`      | tutor         | receive alerts for at-risk students (e.g., repeated absences)                            | monitor their status.                              |
+| `*`      | busy tutor    | check on my students' progress in one place                                              | easily differentiate who to help out more.         |
+| `*`      | busy tutor    | quickly view my student's statistics at a glance                                         | have a quick overview of my class' progress.       |
 
 ### Use cases
 
