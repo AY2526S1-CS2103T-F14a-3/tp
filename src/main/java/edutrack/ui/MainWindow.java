@@ -1,5 +1,8 @@
 package edutrack.ui;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.util.logging.Logger;
 
 import edutrack.commons.core.GuiSettings;
@@ -137,9 +140,40 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.setHeight(guiSettings.getWindowHeight());
         primaryStage.setWidth(guiSettings.getWindowWidth());
         if (guiSettings.getWindowCoordinates() != null) {
-            primaryStage.setX(guiSettings.getWindowCoordinates().getX());
-            primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+            double x = guiSettings.getWindowCoordinates().getX();
+            double y = guiSettings.getWindowCoordinates().getY();
+
+            // Validate that the saved position is within current screen bounds
+            if (isWithinScreenBounds(x, y)) {
+                primaryStage.setX(x);
+                primaryStage.setY(y);
+            } else {
+                // If position is off-screen, center the window on the primary screen
+                primaryStage.centerOnScreen();
+            }
         }
+    }
+
+    /**
+     * Checks if the given coordinates are within the bounds of any available screen.
+     * This prevents the window from opening off-screen when the user switches from
+     * multiple monitors to a single monitor.
+     *
+     * @param x The x-coordinate to check.
+     * @param y The y-coordinate to check.
+     * @return true if the coordinates are within any screen bounds, false otherwise.
+     */
+    private boolean isWithinScreenBounds(double x, double y) {
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] screens = ge.getScreenDevices();
+
+        for (GraphicsDevice screen : screens) {
+            Rectangle bounds = screen.getDefaultConfiguration().getBounds();
+            if (bounds.contains((int) x, (int) y)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
