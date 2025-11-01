@@ -43,5 +43,12 @@ public class TagCreateCommandParserTest {
         assertParseFailure(parser, "some preamble t/Physics",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagCreateCommand.MESSAGE_USAGE));
     }
+
+    @Test
+    public void parse_multipleTags_throwsParseException() {
+        // multiple tags should not be allowed
+        assertParseFailure(parser, " t/Physics t/Chemistry",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, TagCreateCommand.MESSAGE_USAGE));
+    }
 }
 

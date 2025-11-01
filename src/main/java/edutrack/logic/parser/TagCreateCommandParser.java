@@ -26,6 +26,11 @@ public class TagCreateCommandParser implements Parser<TagCreateCommand> {
                     TagCreateCommand.MESSAGE_USAGE));
         }
 
+        if (argMultimap.getAllValues(PREFIX_TAG).size() > 1) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    TagCreateCommand.MESSAGE_USAGE));
+        }
+
         Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
         return new TagCreateCommand(tag);
     }
