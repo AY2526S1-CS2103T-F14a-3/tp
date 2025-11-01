@@ -50,6 +50,11 @@ public class SampleDataUtil {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
+            samplePerson.getTags().forEach(tag -> {
+                if (!sampleAb.hasTag(tag)) {
+                    sampleAb.addTag(tag);
+                }
+            });
         }
         return sampleAb;
     }
