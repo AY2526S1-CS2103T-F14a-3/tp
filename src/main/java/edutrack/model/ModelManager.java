@@ -210,6 +210,12 @@ public class ModelManager implements Model {
         addressBook.deleteTag(tag);
     }
 
+    @Override
+    public Tag getTag(Tag tag) {
+        requireNonNull(tag);
+        return addressBook.getTag(tag);
+    }
+
     public ObservableList<Tag> getFilteredTagList() {
         return filteredTags;
     }

@@ -120,6 +120,7 @@ public interface Model {
     boolean hasTag(Tag tag);
     void addTag(Tag tag);
     void deleteTag(Tag tag);
+    Tag getTag(Tag tag);
     ObservableList<Tag> getFilteredTagList();
     void updateFilteredTagList(Predicate<Tag> predicate);
 }

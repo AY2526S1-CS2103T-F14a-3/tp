@@ -263,6 +263,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public Tag getTag(Tag tag) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void sortPersonList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -339,6 +344,15 @@ public class AddCommandTest {
         public boolean hasTag(Tag tag) {
             requireNonNull(tag);
             return tagsAdded.stream().anyMatch(tag::equals);
+        }
+
+        @Override
+        public Tag getTag(Tag tag) {
+            requireNonNull(tag);
+            return tagsAdded.stream()
+                    .filter(tag::equals)
+                    .findFirst()
+                    .orElseThrow(() -> new AssertionError("Tag should exist"));
         }
 
         @Override

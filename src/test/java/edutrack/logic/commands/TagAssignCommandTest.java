@@ -106,6 +106,36 @@ public class TagAssignCommandTest {
     }
 
     @Test
+    public void execute_caseInsensitiveTagAssignment_usesCanonicalTagName() {
+        Model freshModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+
+        // Create tag with specific casing and add to model
+        Tag canonicalTag = new Tag("example");
+        freshModel.addTag(canonicalTag);
+
+        // Create tag with different casing for assignment
+        Tag userInputTag = new Tag("exAmple");
+
+        // Execute command with different casing
+        TagAssignCommand assignCommand = new TagAssignCommand(INDEX_FIRST_PERSON, userInputTag);
+        try {
+            assignCommand.execute(freshModel);
+        } catch (Exception e) {
+            // Should not throw exception for valid command
+        }
+
+        // Verify that the person has the canonical tag, not the user input tag
+        Person editedPerson = freshModel.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        assertTrue(editedPerson.getTags().contains(canonicalTag),
+                "Person should have the canonical tag 'example'");
+
+        // Verify the exact tag object is the canonical one
+        boolean hasCanonicalTag = editedPerson.getTags().stream()
+                .anyMatch(t -> t.tagName.equals("example"));
+        assertTrue(hasCanonicalTag, "Tag name should be 'example', not 'exAmple'");
+    }
+
+    @Test
     public void equals() {
         Tag physics = new Tag("Physics");
         Tag chemistry = new Tag("Chemistry");

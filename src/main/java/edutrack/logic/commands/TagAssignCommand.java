@@ -47,6 +47,9 @@ public class TagAssignCommand extends Command {
             throw new CommandException(MESSAGE_TAG_NOT_FOUND);
         }
 
+        // Get the canonical tag from the model to ensure correct casing
+        Tag canonicalTag = model.getTag(tag);
+
         List<Person> lastShownList = model.getFilteredPersonList();
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -54,13 +57,13 @@ public class TagAssignCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
 
-        if (personToEdit.getTags().contains(tag)) {
+        if (personToEdit.getTags().contains(canonicalTag)) {
             throw new CommandException(MESSAGE_DUPLICATE_TAG);
         }
 
-        // Add tag to person
+        // Add canonical tag to person
         Set<Tag> updatedTags = new HashSet<>(personToEdit.getTags());
-        updatedTags.add(tag);
+        updatedTags.add(canonicalTag);
 
         Person editedPerson = new Person(
                 personToEdit.getName(),
@@ -73,7 +76,7 @@ public class TagAssignCommand extends Command {
 
         model.setPerson(personToEdit, editedPerson);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, editedPerson.getName(), tag));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, editedPerson.getName(), canonicalTag));
     }
 
     @Override
