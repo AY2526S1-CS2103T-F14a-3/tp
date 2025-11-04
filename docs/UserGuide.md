@@ -84,7 +84,7 @@ Ensure you have Java `17` or above installed in your Computer.<br>
 
 7. To do things in EduTrack, you have to type in certain commands into the main command box, and hit Enter.
    <br><br>Refer to the [Features](#features) below for the details of all commands that you can use.
-   <br><br>You may also refer to the [Command summary](#Command-summary) below for a summary table of all possible commands.
+   <br><br>You may also refer to the [Command Summary](#command-summary) below for a summary table of all possible commands.
 
 <a href="#table-of-contents" style="font-size:14px;font-weight:normal">⬆️ Return to Table of Contents</a>
 
